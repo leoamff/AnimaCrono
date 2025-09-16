@@ -1,12 +1,70 @@
-# React + Vite
+# AnimaCrono - Uma Viagem no Tempo da Animação
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Trabalho Acadêmico** - Disciplina de Front-End Framework  
+**Professor**: Dr. Diego Rodrigues  
+**Instituição**: Uninassau - 4º Período  
+**Projeto desenvolvido com React.js e Vite**
 
-Currently, two official plugins are available:
+## 👥 Integrantes do Grupo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Leonardo Amyntas Machado de Freitas Filho** - 01835116
+- [Nome do Integrante 2]
+- [Nome do Integrante 3]
+- [Nome do Integrante 4]
 
-## Expanding the ESLint configuration
+## 🎌 Sobre o Projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### **Tema: Uma Viagem no Tempo da Animação**
+O **AnimaCrono** é uma plataforma nostálgica dedicada aos amantes de desenhos animados, organizando conteúdo por gerações e anos de lançamento (Anos 80, 90, 2000, etc.). É um projeto responsivo que proporciona uma experiência educativa e cultural sobre a história da animação, adaptando-se perfeitamente a desktop, tablet e mobile.
+
+### **Funcionalidades Principais:**
+
+#### 🏠 **Página Inicial**
+- Banner principal com anime em destaque
+- Carrosséis horizontais organizados por categorias
+- Header com logo, navegação e campo de busca
+- Interface intuitiva e atrativa
+
+#### 📋 **Sistema de Detalhes**
+- Páginas individuais para cada anime/série
+- Informações completas: sinopse, ano, ficha técnica
+- Botões de ação "Assistir" e "Minha Lista"
+- Seção de conteúdos relacionados
+
+#### ⭐ **Minha Lista Personalizada**
+- Adicionar/remover animes da lista pessoal
+- Página dedicada aos favoritos
+- Persistência de dados usando localStorage
+- Contador de itens salvos
+
+#### 🎭 **Sistema de Categorias**
+- Mínimo 5 categorias diferentes (Ação, Drama, Comédia, Suspense, Ficção)
+- Navegação fluida entre categorias
+- Pelo menos 8 títulos por categoria
+- Indicadores visuais da categoria ativa
+
+#### 📱 **Responsividade Completa**
+- Layout adaptável para desktop, tablet e mobile
+- Carrosséis funcionais em todos os dispositivos
+
+### **Objetivo Educativo:**
+Criar uma plataforma que celebra a história da animação sem hospedar episódios, focando em informações culturais e proporcionando uma experiência nostálgica onde usuários podem explorar e redescobrir animes que marcaram diferentes gerações.
+
+##  Como executar
+
+```bash
+# Clonar repositório
+git clone https://github.com/leoamff/AnimaCrono.git
+
+# Entrar na pasta
+cd AnimaCrono
+
+# Instalar dependências
+npm install
+
+# Executar projeto
+npm run dev
+
+# Abrir no navegador
+http://localhost:5173
+```
