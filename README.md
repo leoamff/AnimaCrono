@@ -3,13 +3,13 @@
 **Trabalho Acadêmico** - Disciplina de Front-End Framework  
 **Professor**: Dr. Diego Rodrigues  
 **Instituição**: Uninassau - 4º Período  
-**Projeto desenvolvido com React.js e Vite**
+**Projeto desenvolvido com React.ts e Vite**
 
 ## 👥 Integrantes do Grupo
 
 - **Leonardo Amyntas Machado de Freitas Filho** - 01835116
-- [Nome do Integrante 2]
-- [Nome do Integrante 3]
+- **Júlio César Queiroz de Barros** - 01705803
+- **Andrezza Coelho dos Santos** - 01725227
 - [Nome do Integrante 4]
 
 ## 🎌 Sobre o Projeto
