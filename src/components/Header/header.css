@@ -1,0 +1,160 @@
+.header {
+  background: rgb(23, 105, 160);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1920px;
+  margin: 0 auto; 
+  padding: 0 40px;
+  height: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 35px; 
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo h1 {
+  font-family: sans-serif; 
+  font-size: 1.75rem; 
+  font-weight: 700; 
+  cursor: pointer; 
+  
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  transition: color 0.3s ease;
+}
+
+.logo h1:hover {
+  color: #fbbf24;
+}
+
+.desktop-nav .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
+}
+
+.desktop-nav .menu a {
+  color: #ffffffd0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 20px;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav .menu a:hover {
+  color: #fbbf24;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 16px;
+  min-width: 120px;
+}
+
+.header-right svg {
+  color: #e7e9e7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: 32px;
+  padding: 4px;
+}
+
+.header-right a {
+  color: #e7e9e7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.header-right a:hover,
+.header-right svg:hover {
+  color: #fbbf24;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 20px;
+    height: 60px;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .header-left {
+    gap: 16px;
+  }
+  
+  .logo h1 {
+    font-size: 16px;
+  }
+  
+  .header-right {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 15px;
+    height: 55px;
+  }
+  
+  .logo h1 {
+    font-size: 16px;
+  }
+}
+
+body {
+  padding-top: 60px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 55px;
+  }
+}
