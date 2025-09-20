@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "backend": "json-server --watch src/db/db.json --port 5000",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "form": "^0.2.5",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.2",
     "json-server": "1.0.0-beta.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
