@@ -1,5 +1,6 @@
 .header {
   background: rgb(23, 105, 160);
+  /* background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: fixed;
@@ -37,12 +38,10 @@
   font-size: 1.75rem; 
   font-weight: 700; 
   cursor: pointer; 
-  
   color: #ffffff;
-  margin: 0;
-  letter-spacing: 1px;
+  margin: 10;
   text-transform: uppercase;
-  padding: 8px 20px;
+  padding: 13px 20px;
   transition: color 0.3s ease;
 }
 
@@ -65,7 +64,6 @@
   font-weight: 400;
   padding: 8px 20px;
   font-family: Arial, sans-serif;
-  text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
@@ -140,21 +138,5 @@
   
   .logo h1 {
     font-size: 16px;
-  }
-}
-
-body {
-  padding-top: 60px;
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding-top: 55px;
   }
 }
