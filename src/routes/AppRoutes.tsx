@@ -13,6 +13,7 @@ export default function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/movie:id" element={<Home />} />
           {/* Definir outras rotas aqui */}
         </Routes>
       </div>
