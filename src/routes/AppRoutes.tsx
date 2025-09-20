@@ -1,21 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home/Home'
+import Movie from '../pages/Movie/Movie'
 // Importar páginas aqui quando criar
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
-      <div className="app">
-
-        <div className="main-content" style={{ paddingTop: '60px' }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/movie:id" element={<Home />} />
-            {/* Definir outras rotas aqui */}
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/movie/:id" element={<Movie />} />
+        {/* Definir outras rotas aqui */}
+      </Routes>
     </BrowserRouter>
   )
 }

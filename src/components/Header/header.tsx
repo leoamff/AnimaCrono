@@ -1,4 +1,4 @@
-import './Header.css';
+import './header.css';
 import { Link } from 'react-router-dom';
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
