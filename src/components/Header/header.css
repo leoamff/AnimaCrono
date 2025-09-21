@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&display=swap');
+
 .header {
   background: rgb(23, 105, 160);
   backdrop-filter: blur(10px);
@@ -33,14 +35,14 @@
 }
 
 .logo h1 {
-  font-family: sans-serif; 
-  font-size: 1.75rem; 
-  font-weight: 700; 
+  font-family: 'Bebas Neue', 'Oswald', sans-serif; 
+  font-size: 2rem; 
+  font-weight: 400; 
   cursor: pointer; 
   
   color: #ffffff;
   margin: 0;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   padding: 8px 20px;
   transition: color 0.3s ease;
@@ -62,16 +64,18 @@
   color: #ffffffd0;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 8px 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Oswald', 'Bebas Neue', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
 }
 
 .desktop-nav .menu a:hover {
   color: #fbbf24;
+  transform: translateY(-2px);
+  text-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
 }
 
 .header-right {
@@ -124,7 +128,8 @@
   }
   
   .logo h1 {
-    font-size: 16px;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
   }
   
   .header-right {
@@ -139,7 +144,8 @@
   }
   
   .logo h1 {
-    font-size: 16px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
   }
 }
 
