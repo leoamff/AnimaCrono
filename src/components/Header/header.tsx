@@ -31,7 +31,14 @@ export default function Header() {
                     </nav>
                 </div>
                 <div className="header-right">
-                    <IoSearchOutline size={32}/>
+                    <div className="search-container">
+                        <IoSearchOutline className="search-icon" size={20}/>
+                        <input 
+                            type="text" 
+                            placeholder="Buscar filmes..." 
+                            className="search-input"
+                        />
+                    </div>
                     <Link to="/perfil"><BsPersonCircle size={32}/></Link>
                 </div>
             </div>
