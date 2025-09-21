@@ -1,9 +1,6 @@
-import Header from '../../components/Header/header'
-
 export default function Home() {
   return (
-    <div>
-      <Header />    
+    <div style={{ padding: '20px' }}>
       <h1>Bem-vindo ao AnimaCrono!</h1>
       <p>Conteúdo da página principal</p>
     </div>

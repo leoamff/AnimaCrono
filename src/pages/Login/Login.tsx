@@ -14,7 +14,6 @@ export default function Login() {
     event.preventDefault(); 
     setError(null); 
 
-    // Verificar credenciais padrão primeiro
     if (email === 'animacrono@uninassau.com' && password === 'senha123') {
       localStorage.setItem('animacrono_current_user', JSON.stringify({
         id: 'admin',
@@ -25,14 +24,12 @@ export default function Login() {
       return;
     }
 
-    // Verificar usuários cadastrados no localStorage
     const usuariosCadastrados = JSON.parse(localStorage.getItem('animacrono_users') || '[]');
     const usuarioEncontrado = usuariosCadastrados.find((user: any) => 
       user.email === email && user.password === password
     );
 
     if (usuarioEncontrado) {
-      // Salvar usuário logado no localStorage (sem a senha)
       localStorage.setItem('animacrono_current_user', JSON.stringify({
         id: usuarioEncontrado.id,
         nome: usuarioEncontrado.nome,
