@@ -18,7 +18,6 @@ export default function Cadastro() {
     setError(null);
     setSuccess(null);
 
-    // Validações básicas
     if (!nome || !email || !password || !confirmPassword) {
       setError('Todos os campos são obrigatórios.');
       return;
@@ -34,7 +33,6 @@ export default function Cadastro() {
       return;
     }
 
-    // Verificar se o email já existe
     const usuariosExistentes = JSON.parse(localStorage.getItem('animacrono_users') || '[]');
     const emailExiste = usuariosExistentes.find((user: any) => user.email === email);
     
@@ -43,12 +41,11 @@ export default function Cadastro() {
       return;
     }
 
-    // Salvar novo usuário no localStorage
     const novoUsuario = {
-      id: Date.now(), // ID simples baseado no timestamp
+      id: Date.now(), 
       nome,
       email,
-      password // Em produção, a senha deveria ser criptografada
+      password 
     };
 
     usuariosExistentes.push(novoUsuario);
