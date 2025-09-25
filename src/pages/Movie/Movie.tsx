@@ -53,7 +53,7 @@ export default function Movie() {
     const director = movie.credits?.crew?.find((c) => c.job === "Director");
 
     return (
-        <div className="min-h-screen w-full bg-black flex flex-col">
+        <div className="min-h-screen w-full bg-black flex flex-col pb-10">
             {/* Banner Netflix */}
             <div
                 className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full bg-center bg-cover flex items-end"
