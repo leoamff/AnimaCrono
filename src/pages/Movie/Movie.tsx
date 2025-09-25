@@ -56,7 +56,7 @@ export default function Movie() {
         <div className="min-h-screen w-full bg-black flex flex-col pb-10">
             {/* Banner Netflix */}
             <div
-                className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full bg-center bg-cover flex items-end"
+                className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full h-full bg-center bg-cover flex items-end pb-10"
                 style={{
                     backgroundImage: movie.backdrop_path
                         ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
