@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'; 
 import useAxios from '../../hooks/useAxios'; 
+import axios from 'axios';
 import './Home.css'; 
 
 // --- 1. INTERFACES E TIPOS ---
@@ -156,11 +157,62 @@ const MovieList = ({ title, movies, fallbackMessage, id }: MovieListProps) => (
 
 // --- 5. COMPONENTE HOME PRINCIPAL ---
 export default function Home() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState<Movie[]>([]);
+    const [isSearching, setIsSearching] = useState(false);
+
     const API_KEY = import.meta.env.VITE_API_KEY; 
     const GENRE_ID_ANIMATION = 16;
 
     const today = new Date();
     const endDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`; 
+
+    // Escuta mudanças de pesquisa do Header
+    useEffect(() => {
+        const handleSearchChange = (event: CustomEvent) => {
+            const newSearchTerm = event.detail;
+            setSearchTerm(newSearchTerm);
+            
+            if (newSearchTerm.trim()) {
+                searchMovies(newSearchTerm);
+            } else {
+                setSearchResults([]);
+                setIsSearching(false);
+            }
+        };
+
+        // Carrega termo inicial do localStorage
+        const savedSearch = localStorage.getItem('animacrono_search') || '';
+        setSearchTerm(savedSearch);
+        if (savedSearch.trim()) {
+            searchMovies(savedSearch);
+        }
+
+        window.addEventListener('searchChanged', handleSearchChange as EventListener);
+        
+        return () => {
+            window.removeEventListener('searchChanged', handleSearchChange as EventListener);
+        };
+    }, []);
+
+    // Função para buscar filmes
+    const searchMovies = async (query: string) => {
+        setIsSearching(true);
+        
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=pt-BR&query=${query}`
+            );
+            
+            const results = response.data.results.slice(0, 12);
+            setSearchResults(results);
+        } catch (error) {
+            console.error('Erro na busca:', error);
+            setSearchResults([]);
+        } finally {
+            setIsSearching(false);
+        }
+    };
 
     // URLs da API para chamadas de filmes
     const link80s = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=pt-BR&with_genres=${GENRE_ID_ANIMATION}&primary_release_date.gte=1980-01-01&primary_release_date.lte=1989-12-31&sort_by=popularity.desc`;
@@ -189,10 +241,38 @@ export default function Home() {
     const filmesAnos2000 = data2000s?.results || [];
     const filmesAnos2020 = data2020s?.results || [];
 
-    // Renderização da Página
+    // Se há termo de pesquisa, mostra resultados da busca
+    if (searchTerm.trim()) {
+        return (
+            <div className="home-container">
+                <div className="search-results-section">
+                    <h2 className="search-title">
+                        Resultados para: "{searchTerm}"
+                    </h2>
+                    
+                    {isSearching ? (
+                        <div className="search-loading">
+                            <p>Buscando filmes...</p>
+                        </div>
+                    ) : searchResults.length > 0 ? (
+                        <div className="search-results-grid">
+                            {searchResults.map((movie) => (
+                                <MovieCard key={movie.id} movie={movie} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="search-no-results">
+                            <p>Nenhum conteúdo encontrado para "{searchTerm}"</p>
+                            <p>Tente usar palavras-chave diferentes ou verifique a ortografia.</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="home-container">
-            {/* Título 'ANIMACRONO' removido daqui */}
             
             <Carousel />
 
