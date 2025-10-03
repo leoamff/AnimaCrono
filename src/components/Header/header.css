@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 .header {
-  background: rgb(23, 105, 160);
+  background-image: linear-gradient(
+    to right,
+    #307D9A, 
+    #201D3A  
+  );
+    background-color: #201D3A; 
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: fixed;
@@ -218,5 +223,61 @@
   .search-input::placeholder {
     content: "Buscar...";
     font-size: 12px;
+  }
+}
+
+/* Menu mobile */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #201D3A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 999;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #e7e9e7;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-menu-btn:hover {
+  color: #fbbf24;
+}
+
+.mobile-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu a {
+  display: block;
+  color: #ffffffd0;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu a:hover {
+  color: #fbbf24;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .mobile-nav {
+    display: block;
   }
 }

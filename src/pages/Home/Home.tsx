@@ -20,9 +20,9 @@ const Carousel = () => {
     
     // BACKDROPS de Animação com URLs fornecidas (Subtítulos removidos)
     const slides = [
-        { id: 1, title: 'O REI LEÃO (1994)', linkTo: '/movie/8587', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8aIvm8OaJISOpVTt7rMIh7X35G5.jpg' }, 
-        { id: 2, title: 'COMO TREINAR O SEU DRAGÃO', linkTo: '/movie/10191', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vdvEClt3J8sFWxyMo0Jm7JpouEo.jpg' },
-        { id: 3, title: 'SHREK (2001)', linkTo: '/movie/806', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg' },
+        { id: 1, title: 'O Rei Leão (1994)', linkTo: '/movie/8587', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8aIvm8OaJISOpVTt7rMIh7X35G5.jpg' }, 
+        { id: 2, title: 'Como Treinar o Seu Dragão', linkTo: '/movie/10191', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vdvEClt3J8sFWxyMo0Jm7JpouEo.jpg' },
+        { id: 3, title: 'Sherek (2001)', linkTo: '/movie/806', imageUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg' },
     ];
 
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -63,7 +63,7 @@ const Carousel = () => {
          return (
              <div className="carousel-container loading-state">
                  <div className="slide-content">
-                    <h2>CARREGANDO IMAGEM...</h2>
+                    <h2>Carregando Imagens...</h2>
                  </div>
                  <button onClick={prevSlide} className="nav-button prev">&#10094;</button>
                  <button onClick={nextSlide} className="nav-button next">&#10095;</button>
@@ -300,15 +300,6 @@ export default function Home() {
                 fallbackMessage="Nenhum filme dos anos 2020 encontrado."
                 id="section-2020s" 
             />
-            
-            <hr className="divider" />
-            
-            <div className="final-link-container">
-                <Link 
-                    to="/movie/550"
-                    className="circular-promo-button"
-                />
-            </div>
         </div>
     );
 }
