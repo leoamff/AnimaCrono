@@ -1,9 +1,304 @@
+/* ======================================= */
+/* 1. ESTILOS GERAIS DA PÁGINA HOME */
+/* ======================================= */
+
 .home-container {
-    background: black;
-    color: white;
-    min-height: 100vh;
+    padding: 20px;
+    background-color: #01020c;
+    color: #eeeeee;
+}
+
+.main-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #c5c6d4;
+}
+
+/* ======================================= */
+/* 2. ESTILOS DO CARROSSEL */
+/* ======================================= */
+
+.carousel-container {
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+    background-color: #01020c;
+}
+
+/* Estado de carregamento */
+.carousel-container.loading-state {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.carousel-image {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 1; 
+    filter: brightness(55%);
+    transition: opacity 0.5s ease-in-out; 
+}
+
+.slide-content {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 10; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;
+    color: white;
+    padding: 0 60px; 
+}
+
+.slide-content h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.slide-content p {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20; 
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.nav-button.prev {
+    left: 10px;
+}
+
+.nav-button.next {
+    right: 10px;
+}
+
+.dot-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 8px;
+}
+
+.dot-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot-indicator.active {
+    background-color: white;
+    width: 12px;
+    height: 12px;
+}
+
+
+/* ======================================= */
+/* 3. ESTILOS DA LISTA DE FILMES (CARDS MENORES E ALINHAMENTO CORRIGIDO) */
+/* ======================================= */
+
+.movie-list-section {
+    margin: 50px 0;
+}
+
+.movie-list-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #a8c1f3;
+    padding-left: 10px;
+}
+
+.movie-list-grid {
+    display: grid;
+    /* CRÍTICO: Diminuído o tamanho mínimo para 160px para caber mais cards e alinhamento */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 20px;
+    /* Garante que os itens de grid comecem sempre alinhados no topo e estiquem */
+    align-items: stretch;
+}
+
+.movie-card-link {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; /* Ocupa 100% da altura da célula do grid (mantendo o alinhamento) */
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1a1a2e;
+}
+
+.movie-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.movie-poster {
+    width: 100%;
+    /* CRÍTICO: Força o pôster a ocupar o espaço, mas mantendo a proporção */
+    display: block;
+    border-radius: 8px 8px 0 0;
+}
+
+.movie-title {
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    /* Empurra o título para baixo, garantindo que o card preencha o espaço total */
+    margin-top: auto; 
+}
+
+
+/* ======================================= */
+/* 4. ESTILOS FINAIS */
+/* ======================================= */
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    margin: 40px 0;
+}
+
+.final-link-container {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.circular-promo-button {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #a8c1f3;
+    border-radius: 50%;
+}
+
+/* ======================================= */
+/* 5. ESTILOS DOS RESULTADOS DE PESQUISA */
+/* ======================================= */
+
+.search-results-section {
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+.search-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+    border-left: 5px solid #a8c1f3;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.search-loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: #a8c1f3;
+    font-size: 1.2rem;
+}
+
+.search-error {
+    text-align: center;
+    padding: 60px 20px;
+    color: #ff6b6b;
+    font-size: 1.1rem;
+}
+
+.search-no-results {
+    text-align: center;
+    padding: 80px 20px;
+    color: #ccc;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.search-no-results p:first-child {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #a8c1f3;
+}
+
+.search-no-results p:last-child {
+    font-size: 1rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+/* Responsividade para pesquisa */
+@media (max-width: 768px) {
+    .search-results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    
+    .search-title {
+        font-size: 1.5rem;
+        padding-left: 10px;
+    }
+    
+    .search-no-results {
+        padding: 60px 15px;
+    }
+    
+    .search-no-results p:first-child {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    
+    .search-title {
+        font-size: 1.3rem;
+    }
 }
