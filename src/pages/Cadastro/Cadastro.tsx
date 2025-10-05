@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Cadastro.css';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.jpeg';
 
 export default function Cadastro() {
   const [nome, setNome] = useState<string>('');

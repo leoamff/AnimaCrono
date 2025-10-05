@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 
+// 1. IMPORTAÇÃO DA IMAGEM DO LOGO
+// Ajuste o caminho '../assets/logo.png' conforme a localização exata do seu arquivo
+import logo from '../../assets/logo.jpeg'; 
+
+
 export default function Header() {
     const menuItens = [
         { nome: "Início", rota: "/" },
@@ -17,7 +22,8 @@ export default function Header() {
                 <div className="header-left">
                     <div className="logo">
                         <Link to="/">
-                            <h1>AnimaCrono</h1>
+                            {/* 2. SUBSTITUIÇÃO AQUI: <h1> foi trocado por <img> */}
+                            <img src={logo} alt="AnimaCrono Logo" className="header-logo-img"/>
                         </Link>
                     </div>
                     <nav className="desktop-nav">
