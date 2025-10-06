@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useCallback, useMemo } from 'react'; 
 import useAxios from '../../hooks/useAxios'; 
+import axios from 'axios';
 import './Home.css'; 
 
 // --- TIPAGEM ---
