@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { FaGithub, FaTwitter, FaInstagram, FaEnvelope, FaPhone } from 'react-icons/fa';
-import logo from '../../assets/logo.png';
 import './Footer.css';
 
 export default function Footer() {
@@ -9,7 +8,6 @@ export default function Footer() {
             <div className="footer-container">
                 <div className="footer-section">
                     <div className="footer-logo-container">
-                        <img src={logo} alt="AnimaCrono Logo" className="footer-logo-img" />
                         <h2 className="footer-logo">AnimaCrono</h2>
                     </div>
                     <p className="footer-description">
@@ -34,11 +32,12 @@ export default function Footer() {
                 <div className="footer-section">
                     <h3 className="footer-title">Desenvolvedores</h3>
                     <ul className="footer-links">
-                        <li><a href="https://www.linkedin.com/in/leoamff">Leonardo Amyntas</a></li>
-                        <li><a href="https://www.linkedin.com/in/jcjulio20060">Julio César</a></li>
+                      
                         <li><a href="https://www.linkedin.com/in/andrezza-coelho">Andrezza Coelho</a></li>
                         <li><a href="#">Gabriela</a></li>
                         <li><a href="#">Jeniffer</a></li>
+                        <li><a href="https://www.linkedin.com/in/jcjulio20060">Julio César</a></li>
+                        <li><a href="https://www.linkedin.com/in/leoamff">Leonardo Amyntas</a></li>
                     </ul>
                 </div>
 
