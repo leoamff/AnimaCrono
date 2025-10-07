@@ -32,7 +32,8 @@ export default function Header() {
         { nome: "Início", rota: "/" },
         { nome: "Séries", rota: "/series" },
         { nome: "Filmes", rota: "/filmes" },
-        { nome: "Minha Lista", rota: "/minha-lista" }
+        { nome: "Minha Lista", rota: "/minha-lista" },
+        { nome: "Perfil", rota: "/perfil" }
     ];
 
     // Salva no localStorage quando digita
