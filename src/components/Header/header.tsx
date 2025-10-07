@@ -2,16 +2,31 @@ import './header.css';
 import { Link } from 'react-router-dom';
 import { IoSearchOutline, IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
-import { useState } from 'react';
-
-// 1. IMPORTAÇÃO DA IMAGEM DO LOGO
-// Ajuste o caminho '../assets/logo.png' conforme a localização exata do seu arquivo
+import { useState, useEffect } from 'react';
 import logo from '../../assets/logo.jpeg'; 
 
 
 export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Carrega o termo de pesquisa salvo no localStorage
+    useEffect(() => {
+        const savedSearch = localStorage.getItem('animacrono_search') || '';
+        setSearchTerm(savedSearch);
+
+        // Escuta eventos de limpeza de pesquisa vindos de outros componentes
+        const handleClearSearch = () => {
+            const currentSearch = localStorage.getItem('animacrono_search') || '';
+            setSearchTerm(currentSearch);
+        };
+
+        window.addEventListener('searchCleared', handleClearSearch);
+        
+        return () => {
+            window.removeEventListener('searchCleared', handleClearSearch);
+        };
+    }, []);
 
     const menuItens = [
         { nome: "Início", rota: "/" },
@@ -40,13 +55,28 @@ export default function Header() {
         setIsMenuOpen(false);
     };
 
+    // Limpar pesquisa quando navegar
+    const clearSearch = () => {
+        setSearchTerm('');
+        localStorage.removeItem('animacrono_search');
+        
+        // Dispara eventos para atualizar outros componentes
+        window.dispatchEvent(new CustomEvent('searchChanged', { detail: '' }));
+        window.dispatchEvent(new CustomEvent('searchCleared'));
+    };
+
+    // Função combinada para links de navegação
+    const handleNavClick = () => {
+        clearSearch();
+        closeMobileMenu();
+    };
+
     return (
         <header className="header">
             <div className="header-container"> 
                 <div className="header-left">
                     <div className="logo">
-                        <Link to="/">
-                            {/* 2. SUBSTITUIÇÃO AQUI: <h1> foi trocado por <img> */}
+                        <Link to="/" onClick={clearSearch}>
                             <img src={logo} alt="AnimaCrono Logo" className="header-logo-img"/>
                         </Link>
                     </div>
@@ -54,7 +84,7 @@ export default function Header() {
                         <ul className="menu">
                         {menuItens.map((item, index) => (
                             <li key={index}>
-                                <Link to={item.rota}>{item.nome}</Link>
+                                <Link to={item.rota} onClick={handleNavClick}>{item.nome}</Link>
                             </li>
                         ))}
                         </ul>
@@ -91,7 +121,7 @@ export default function Header() {
                     <ul className="mobile-menu">
                         {menuItens.map((item, index) => (
                             <li key={index}>
-                                <Link to={item.rota} onClick={closeMobileMenu}>
+                                <Link to={item.rota} onClick={handleNavClick}>
                                     {item.nome}
                                 </Link>
                             </li>
