@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/header';
+import './Perfil.css';
 
 interface Usuario {
   id: string | number;
@@ -10,15 +11,23 @@ interface Usuario {
 
 export default function Perfil() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const usuarioLogado = localStorage.getItem('animacrono_current_user');
     
-    if (usuarioLogado) {
-      setUsuario(JSON.parse(usuarioLogado));
-    } else {
-      navigate('/login');
+    try {
+      if (usuarioLogado) {
+        setUsuario(JSON.parse(usuarioLogado) as Usuario); 
+      } else {
+        navigate('/login');
+      }
+    } catch (e) {
+      console.error("Erro ao carregar dados do usuário:", e);
+      navigate('/login'); 
+    } finally {
+      setIsLoading(false);
     }
   }, [navigate]);
 
@@ -27,21 +36,26 @@ export default function Perfil() {
     navigate('/login');
   };
 
+  if (isLoading) {
+    return (
+      <div className="perfil-page">
+        <Header />
+        <div className="perfil-container" style={{ textAlign: 'center' }}>Carregando...</div>
+      </div>
+    );
+  }
+
   if (!usuario) {
-    return <div>Carregando...</div>;
+    return null;
   }
 
   return (
-    <div>
+    <div className="perfil-page">
       <Header />    
-      <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+      <div className="perfil-container">
         <h1>Bem-vindo ao AnimaCrono, {usuario.nome}!</h1>
-        <div style={{ 
-          background: '#f5f5f5', 
-          padding: '20px', 
-          borderRadius: '10px', 
-          marginBottom: '20px' 
-        }}>
+        
+        <div className="dados-usuario">
           <h3>Seus dados:</h3>
           <p><strong>Nome:</strong> {usuario.nome}</p>
           <p><strong>E-mail:</strong> {usuario.email}</p>
@@ -50,14 +64,7 @@ export default function Perfil() {
         
         <button 
           onClick={handleLogout}
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#dc3545',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
+          className="btn-logout"
         >
           Sair
         </button>

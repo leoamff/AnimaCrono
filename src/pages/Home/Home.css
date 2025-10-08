@@ -1,7 +1,3 @@
-/* ======================================= */
-/* 1. ESTILOS GERAIS DA PÁGINA HOME */
-/* ======================================= */
-
 .home-container {
     padding: 20px;
     background-color: #01020c;
@@ -15,10 +11,6 @@
     color: #c5c6d4;
 }
 
-/* ======================================= */
-/* 2. ESTILOS DO CARROSSEL */
-/* ======================================= */
-
 .carousel-container {
     height: 450px;
     position: relative;
@@ -29,7 +21,6 @@
     background-color: #01020c;
 }
 
-/* Estado de carregamento */
 .carousel-container.loading-state {
     display: flex;
     align-items: center;
@@ -38,31 +29,31 @@
 }
 
 .carousel-image {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    z-index: 1; 
+    object-fit: cover;
+    z-index: 1;
     filter: brightness(55%);
-    transition: opacity 0.5s ease-in-out; 
+    transition: opacity 0.5s ease-in-out;
 }
 
 .slide-content {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    z-index: 10; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center;     
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: white;
-    padding: 0 60px; 
+    padding: 0 60px;
 }
 
 .slide-content h2 {
@@ -76,32 +67,8 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-.nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20; 
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.nav-button:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.nav-button.prev {
-    left: 10px;
-}
-
-.nav-button.next {
-    right: 10px;
-}
+/* Os botões de navegação lateral (setas) foram removidos do seu JS, 
+   então removemos o CSS redundante do feat/homepage e os estilos do main. */
 
 .dot-indicators {
     position: absolute;
@@ -128,11 +95,6 @@
     height: 12px;
 }
 
-
-/* ======================================= */
-/* 3. ESTILOS DA LISTA DE FILMES (CARDS MENORES E ALINHAMENTO CORRIGIDO) */
-/* ======================================= */
-
 .movie-list-section {
     margin: 50px 0;
 }
@@ -146,17 +108,15 @@
 
 .movie-list-grid {
     display: grid;
-    /* CRÍTICO: Diminuído o tamanho mínimo para 160px para caber mais cards e alinhamento */
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 20px;
-    /* Garante que os itens de grid comecem sempre alinhados no topo e estiquem */
     align-items: stretch;
 }
 
 .movie-card-link {
-    display: flex; 
-    flex-direction: column; 
-    height: 100%; /* Ocupa 100% da altura da célula do grid (mantendo o alinhamento) */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -172,7 +132,6 @@
 
 .movie-poster {
     width: 100%;
-    /* CRÍTICO: Força o pôster a ocupar o espaço, mas mantendo a proporção */
     display: block;
     border-radius: 8px 8px 0 0;
 }
@@ -182,14 +141,8 @@
     text-align: center;
     font-size: 1rem;
     font-weight: 500;
-    /* Empurra o título para baixo, garantindo que o card preencha o espaço total */
-    margin-top: auto; 
+    margin-top: auto;
 }
-
-
-/* ======================================= */
-/* 4. ESTILOS FINAIS */
-/* ======================================= */
 
 .divider {
     border: 0;
@@ -210,11 +163,6 @@
     background-color: #a8c1f3;
     border-radius: 50%;
 }
-
-/* ======================================= */
-/* ======================================= */
-/* 4. ESTILOS DOS RESULTADOS DE PESQUISA */
-/* ======================================= */
 
 .search-results-section {
     margin: 40px 0;
@@ -239,7 +187,6 @@
     margin-top: 30px;
 }
 
-/* Estilos para os cards dentro da grid de pesquisa */
 .search-results-grid .movie-card-link {
     display: block;
     text-decoration: none;
@@ -317,7 +264,6 @@
     line-height: 1.5;
 }
 
-/* Responsividade para pesquisa */
 @media (max-width: 768px) {
     .search-results-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

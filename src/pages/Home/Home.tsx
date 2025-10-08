@@ -4,12 +4,10 @@ import useAxios from '../../hooks/useAxios';
 import axios from 'axios';
 import './Home.css'; 
 
-// --- TIPAGEM ---
 interface Movie { id: number; title: string; poster_path: string; }
-interface MovieListResponse { results: Movie[]; }// --- 2. COMPONENTE CARROSSEL ---
+interface MovieListResponse { results: Movie[]; }
+
 const Carousel = () => {
-    
-    // Imagens de fundo (Backdrops) horizontais para evitar corte
     const slides = useMemo(() => ([
         { id: 1, title: '101 Dálmatas II', linkTo: '/movie/8587', imageUrl: 'https://image.tmdb.org/t/p/original/k9tMAeSgaFASNedoxvyzMnTcilV.jpg' }, 
         { id: 2, title: 'Vida de Inseto', linkTo: '/movie/10191', imageUrl: 'https://image.tmdb.org/t/p/original/vvlbdBCuLt7nkQG7anNE6xHNbAO.jpg' },
@@ -23,13 +21,8 @@ const Carousel = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, [slides.length]); 
 
-    const prevSlide = useCallback(() => {
-        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    }, [slides.length]);
-
     const current = slides[currentSlide];
 
-    // Lógica de Carregamento de Imagem
     useEffect(() => {
         setIsLoading(true);
         const img = new Image();
@@ -38,19 +31,16 @@ const Carousel = () => {
         img.onerror = () => setIsLoading(false);
     }, [current.imageUrl]);
 
-    // Lógica do Autoplay
     useEffect(() => {
         const intervalId = setInterval(nextSlide, 2000); 
         return () => clearInterval(intervalId);
     }, [nextSlide]);
 
     if (isLoading) {
-         return (
-             <div className="carousel-container loading-state">
-                 <div className="slide-content"><h2>CARREGANDO IMAGEM...</h2></div>
-                 <button onClick={prevSlide} className="nav-button prev">&#10094;</button>
-                 <button onClick={nextSlide} className="nav-button next">&#10095;</button>
-                 <div className="dot-indicators">
+        return (
+            <div className="carousel-container loading-state">
+                <div className="slide-content"><h2>CARREGANDO IMAGEM...</h2></div>
+                <div className="dot-indicators">
                     {slides.map((_, index) => (
                         <span 
                             key={index} 
@@ -59,8 +49,8 @@ const Carousel = () => {
                         />
                     ))}
                 </div>
-             </div>
-         )
+            </div>
+        )
     }
 
     return (
@@ -76,9 +66,7 @@ const Carousel = () => {
             <div className="slide-content">
                 <h2 className="carousel-title">{current.title}</h2>
             </div>
-
-            <button onClick={prevSlide} className="nav-button prev">&#10094;</button>
-            <button onClick={nextSlide} className="nav-button next">&#10095;</button>
+            
             
             <div className="dot-indicators">
                 {slides.map((_, index) => (
@@ -93,7 +81,6 @@ const Carousel = () => {
     );
 };
 
-// --- 3. COMPONENTE CARD DE FILME ---
 const MovieCard = ({ movie }: { movie: Movie }) => (
     <Link 
         to={`/movie/${movie.id}`}
@@ -112,13 +99,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => (
     </Link>
 );
 
-// --- 4. COMPONENTE LISTA DE FILMES ---
-interface MovieListProps {
-    title: string;
-    movies: Movie[]; 
-    fallbackMessage: string;
-    id: string; 
-}
+interface MovieListProps { title: string; movies: Movie[]; fallbackMessage: string; id: string; }
 
 const MovieList = ({ title, movies, fallbackMessage, id }: MovieListProps) => (
     <div id={id} className="movie-list-section">
@@ -138,8 +119,6 @@ const MovieList = ({ title, movies, fallbackMessage, id }: MovieListProps) => (
     </div>
 );
 
-
-// --- 5. COMPONENTE HOME PRINCIPAL ---
 export default function Home() {
     // Estados iniciais com verificação do localStorage
     const [searchTerm, setSearchTerm] = useState(() => {
