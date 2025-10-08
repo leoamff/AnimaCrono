@@ -33,7 +33,8 @@ export default function Login() {
       localStorage.setItem('animacrono_current_user', JSON.stringify({
         id: usuarioEncontrado.id,
         nome: usuarioEncontrado.nome,
-        email: usuarioEncontrado.email
+        email: usuarioEncontrado.email,
+        myList: usuarioEncontrado.myList || []
       }));
       navigate('/home');
     } else {

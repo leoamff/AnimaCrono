@@ -7,6 +7,7 @@ type Genre = {
 };
 
 type Movie = {
+  id: number;
   title: string;
   tagline?: string;
   genres: Genre[];
@@ -62,7 +63,7 @@ export default function Details({ setShowTrailer, trailer, movie, director }: De
             </span>
           )}
         </div>
-        <Buttons setShowTrailer={setShowTrailer} trailer={trailer} />
+        <Buttons setShowTrailer={setShowTrailer} trailer={trailer} id={movie.id} />
       </div>
     </>
   );

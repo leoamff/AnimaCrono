@@ -1,6 +1,8 @@
 import { FaPlay, FaInfoCircle } from 'react-icons/fa';
+import MyList from '../MyList/MyList';
 
 type ButtonsProps = {
+    id: number;
   setShowTrailer: React.Dispatch<React.SetStateAction<boolean>>;
   trailer: {
     key: string;
@@ -10,7 +12,7 @@ type ButtonsProps = {
   };
 };
 
-export default function Buttons({ setShowTrailer, trailer }: ButtonsProps) {
+export default function Buttons({ setShowTrailer, trailer, id }: ButtonsProps) {
     return (
         <div className="flex gap-4 mt-2 justify-center">
             <button
@@ -26,6 +28,7 @@ export default function Buttons({ setShowTrailer, trailer }: ButtonsProps) {
                     <FaInfoCircle /> Trailer
                 </button>
             )}
+            <MyList id={id} />
         </div>
     )
 }
