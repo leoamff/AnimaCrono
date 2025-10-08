@@ -1,5 +1,5 @@
 import './header.css';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoSearchOutline, IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
@@ -9,6 +9,22 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    useEffect(() => {
+        const savedSearch = localStorage.getItem('animacrono_search') || '';
+        setSearchTerm(savedSearch);
+
+        const handleClearSearch = () => {
+            const currentSearch = localStorage.getItem('animacrono_search') || '';
+            setSearchTerm(currentSearch);
+        };
+
+        window.addEventListener('searchCleared', handleClearSearch);
+        
+        return () => {
+            window.removeEventListener('searchCleared', handleClearSearch);
+        };
+    }, []);
+    
     const menuItens = useMemo(() => [
         { nome: "Início", rota: "/" },
         { nome: "Séries", rota: "/series" },
@@ -31,12 +47,24 @@ export default function Header() {
         setIsMenuOpen(false);
     };
 
+    const clearSearch = () => {
+        setSearchTerm('');
+        localStorage.removeItem('animacrono_search');
+        window.dispatchEvent(new CustomEvent('searchChanged', { detail: '' }));
+        window.dispatchEvent(new CustomEvent('searchCleared'));
+    };
+
+    const handleNavClick = () => {
+        clearSearch();
+        closeMobileMenu();
+    };
+
     return (
         <header className="header">
             <div className="header-container"> 
                 <div className="header-left">
                     <div className="logo">
-                        <Link to="/">
+                        <Link to="/" onClick={clearSearch}>
                             <img src={logo} alt="AnimaCrono Logo" className="header-logo-img"/>
                         </Link>
                         <span className="logo-name">ANIMACRONO</span>
@@ -45,7 +73,7 @@ export default function Header() {
                         <ul className="menu">
                         {menuItens.map((item, index) => (
                             <li key={index}>
-                                <Link to={item.rota}>{item.nome}</Link>
+                                <Link to={item.rota} onClick={handleNavClick}>{item.nome}</Link>
                             </li>
                         ))}
                         </ul>
@@ -63,7 +91,7 @@ export default function Header() {
                             onChange={handleInputChange}
                         />
                     </div>
-                    <Link to="/perfil"><BsPersonCircle size={32}/></Link>
+                    <Link to="/perfil" onClick={clearSearch}><BsPersonCircle size={32}/></Link>
                     
                     <button 
                         className="mobile-menu-btn"
@@ -80,7 +108,7 @@ export default function Header() {
                     <ul className="mobile-menu">
                         {menuItens.map((item, index) => (
                             <li key={index}>
-                                <Link to={item.rota} onClick={closeMobileMenu}>
+                                <Link to={item.rota} onClick={handleNavClick}>
                                     {item.nome}
                                 </Link>
                             </li>
