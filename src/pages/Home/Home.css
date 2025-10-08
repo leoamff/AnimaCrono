@@ -1,54 +1,14 @@
-/* ======================================= */
-/* 1. ESTILOS GERAIS DA PÁGINA HOME */
-/* ======================================= */
-
-.home-container {
-    padding: 20px;
+body{
     background-color: #01020c;
     color: #eeeeee;
 }
-
-.main-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #c5c6d4;
-}
-
-/* ======================================= */
-/* 2. ESTILOS DO CARROSSEL */
-/* ======================================= */
-
-.carousel-container {
-    height: 450px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    margin: 40px 0;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
-    background-color: #01020c;
-}
-
-/* Estado de carregamento */
-.carousel-container.loading-state {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.carousel-image {
-    position: absolute; 
-    top: 0;
-    left: 0;
+.home-container {
+    padding: 20px 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    z-index: 1; 
-    filter: brightness(55%);
-    transition: opacity 0.5s ease-in-out; 
+    min-height: 100vh;
 }
 
+<<<<<<< Updated upstream
 .slide-content {
     position: absolute; 
     top: 0; 
@@ -221,24 +181,37 @@
     padding: 0 20px;
     background: transparent;
     min-height: 60vh;
+=======
+/* --- ESTILOS DE BUSCA (Search Results) --- */
+
+.search-results-section {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+>>>>>>> Stashed changes
 }
 
 .search-title {
-    color: #ffffff;
-    font-size: 1.8rem;
+    font-size: 2.2em;
+    color: var(--color-primary);
     margin-bottom: 30px;
+<<<<<<< Updated upstream
     border-left: 5px solid #a8c1f3;
     padding-left: 15px;
     text-align: left;
+=======
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 10px;
+>>>>>>> Stashed changes
 }
 
 .search-results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
+<<<<<<< Updated upstream
 /* Estilos para os cards dentro da grid de pesquisa */
 .search-results-grid .movie-card-link {
     display: block;
@@ -284,19 +257,28 @@
 }
 
 .search-loading {
+=======
+.search-loading, .search-no-results {
+>>>>>>> Stashed changes
     text-align: center;
-    padding: 60px 20px;
-    color: #a8c1f3;
-    font-size: 1.2rem;
+    padding: 50px 0;
+    font-size: 1.2em;
+    color: var(--color-text-secondary);
 }
 
-.search-error {
-    text-align: center;
-    padding: 60px 20px;
-    color: #ff6b6b;
-    font-size: 1.1rem;
+.search-no-results p {
+    margin: 5px 0;
 }
 
+/* --- ESTADOS GLOBAIS (Loading/Error) --- */
+
+.loading-state, .error-state {
+    text-align: center;
+    padding: 100px 20px;
+    color: var(--color-text-secondary);
+}
+
+<<<<<<< Updated upstream
 .search-no-results {
     text-align: center;
     padding: 80px 20px;
@@ -360,4 +342,8 @@
     .search-title {
         font-size: 1.3rem;
     }
+=======
+.error-state {
+    color: var(--color-error);
+>>>>>>> Stashed changes
 }

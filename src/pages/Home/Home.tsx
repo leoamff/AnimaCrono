@@ -1,9 +1,14 @@
+<<<<<<< Updated upstream
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useCallback, useMemo } from 'react'; 
+=======
+import { useState, useEffect } from 'react'; 
+>>>>>>> Stashed changes
 import useAxios from '../../hooks/useAxios'; 
 import axios from 'axios';
 import './Home.css'; 
 
+<<<<<<< Updated upstream
 // --- TIPAGEM ---
 interface Movie { id: number; title: string; poster_path: string; }
 interface MovieListResponse { results: Movie[]; }// --- 2. COMPONENTE CARROSSEL ---
@@ -146,6 +151,22 @@ export default function Home() {
         return localStorage.getItem('animacrono_search') || '';
     });
     const [searchResults, setSearchResults] = useState<Movie[]>([]);
+=======
+import Carousel from '../../components/Carousel/Carousel'; 
+import MovieList from '../../components/MovieList/MovieList';
+import MovieCard from '../../components/MovieCard/MovieCard'; 
+import type { movieInterface } from '../../components/movieInterface/movieInterface'; 
+
+// A interface MovieListResponse usa a interfacae movieInterface importada
+interface MovieListResponse {
+    results: movieInterface[];
+}
+
+// Home Principal
+export default function Home() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState<movieInterface[]>([]);
+>>>>>>> Stashed changes
     const [isSearching, setIsSearching] = useState(false);
 
     const { VITE_API_KEY: API_KEY } = import.meta.env; 
@@ -209,6 +230,7 @@ export default function Home() {
         }
     }, []); // Executa apenas uma vez na montagem
     
+<<<<<<< Updated upstream
     // Chamadas da API usando o hook useAxios
     const { data: data80s, loading: loading80s, error: error80s} = useAxios<MovieListResponse>(apiLinks.link80s, 'get', null);
     const { data: data90s, loading: loading90s, error: error90s } = useAxios<MovieListResponse>(apiLinks.link90s, 'get', null);
@@ -219,6 +241,16 @@ export default function Home() {
     const hasError = error80s || error90s || error2000s || error2020s;
 
     if (isLoading) {
+=======
+    // Chamadas da API
+    const { data: data80s, loading: loading80s, error: error80s} = useAxios<MovieListResponse>(link80s, 'get', null);
+    const { data: data90s, loading: loading90s, error: error90s } = useAxios<MovieListResponse>(link90s, 'get', null);
+    const { data: data2000s, loading: loading2000s, error: error2000s } = useAxios<MovieListResponse>(link2000s, 'get', null);
+    const { data: data2020s, loading: loading2020s, error: error2020s } = useAxios<MovieListResponse>(link2020s, 'get', null);
+
+    // CCondições de carregamento e erro
+    if (loading80s || loading90s || loading2000s || loading2020s) {
+>>>>>>> Stashed changes
         return <div className="loading-state"><h2>Carregando catálogos de animação...</h2></div>;
     }
 
@@ -226,7 +258,7 @@ export default function Home() {
         return <div className="error-state">Erro ao carregar dados.</div>;
     }
 
-    // Extração dos Dados
+    // Extraindo os dados
     const filmesAnos80 = data80s?.results || [];
     const filmesAnos90 = data90s?.results || [];
     const filmesAnos2000 = data2000s?.results || [];
@@ -248,7 +280,7 @@ export default function Home() {
                     ) : searchResults.length > 0 ? (
                         <div className="search-results-grid">
                             {searchResults.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie} />
+                                <MovieCard key={movie.id} movie={movie} contentType='movie' />
                             ))}
                         </div>
                     ) : (
@@ -272,24 +304,28 @@ export default function Home() {
                 movies={filmesAnos80}
                 fallbackMessage="Nenhum clássico dos anos 80 foi encontrado."
                 id="section-80s" 
+                contentType='movie'
             />
             <MovieList 
                 title="DESENHOS ANOS 90"
                 movies={filmesAnos90}
                 fallbackMessage="Nenhum filme dos anos 90 encontrado."
                 id="section-90s" 
+                contentType='movie'
             />
             <MovieList 
                 title="NOSTALGIA DO ANO 2000"
                 movies={filmesAnos2000}
                 fallbackMessage="Nenhum filme dos anos 2000 encontrado."
                 id="section-2000s" 
+                contentType='movie'
             />
             <MovieList 
                 title="A NOVA GERAÇÃO ANOS 2020"
                 movies={filmesAnos2020}
                 fallbackMessage="Nenhum filme dos anos 2020 encontrado."
                 id="section-2020s" 
+                contentType='movie'
             />
             
             <hr className="divider" />

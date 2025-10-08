@@ -7,17 +7,25 @@ import Content from "../../components/PrincipalContent/Content";
 
 type Movie = {
     id: number;
-    title: string;
+    // campos de filmes
+    title?: string;
+    release_date?: string;
+    runtime?: number;
+    budget?: number;
+    revenue?: number;
+    
+    // campos de séries
+    name?: string;
+    first_air_date?: string; 
+    episode_run_time?: number[];
+    
+    // Campos Comuns
     overview: string;
     poster_path: string;
     backdrop_path: string;
-    release_date: string;
     vote_average: number;
     genres: { id: number; name: string }[];
-    runtime: number;
     tagline: string;
-    budget: number;
-    revenue: number;
     status: string;
     production_companies: { id: number; name: string; logo_path: string | null }[];
     credits?: {
@@ -29,53 +37,53 @@ type Movie = {
     };
 };
 
-export default function Movie() {
+// interface para injetar a lógica de troca de filmes e séries
+interface MoviePageProps {
+    contentType: 'movie' | 'tv';
+}
+
+export default function Movie({ contentType }: MoviePageProps) {
     const { id: idParam } = useParams();
     const id = Number(idParam);
     const isValidId = !!idParam && !isNaN(id);
 
+    // url dinamica diferencia entre série e filme
     const link = isValidId
-        ? `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=credits,videos,images,recommendations,reviews&language=pt-BR`
+        ? `https://api.themoviedb.org/3/${contentType}/${id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=credits,videos,images,recommendations,reviews&language=pt-BR`
         : "";
 
-    const { data: movie, loading, error } = useAxios<Movie>(link, "get", null);
+    const { data: mediaData, loading, error } = useAxios<Movie>(link, "get", null);
 
     const [showTrailer, setShowTrailer] = useState(false);
 
-    if (!isValidId) return <div className="text-red-500">ID do filme inválido.</div>;
+    if (!isValidId) return <div className="text-red-500">ID do conteúdo inválido.</div>;
     if (loading) return <div className="flex justify-center items-center h-96">Carregando...</div>;
     if (error) return <div className="text-red-500">Erro: {String(error)}</div>;
-    if (!movie) return <div>Nenhum filme encontrado</div>;
+    if (!mediaData) return <div>Nenhum conteúdo encontrado</div>;
 
-    const trailer = movie.videos?.results?.find(
+    const trailer = mediaData.videos?.results?.find(
         (v) => v.site === "YouTube" && v.type === "Trailer"
     );
-    const director = movie.credits?.crew?.find((c) => c.job === "Director");
+    const director = mediaData.credits?.crew?.find((c) => c.job === "Director");
 
     return (
         <div className="min-h-screen w-full bg-black flex flex-col pb-10">
-            {/* Banner Netflix */}
             <div
                 className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full h-full bg-center bg-cover flex items-end pb-10"
                 style={{
-                    backgroundImage: movie.backdrop_path
-                        ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
-                        : movie.poster_path
-                        ? `url(https://image.tmdb.org/t/p/original${movie.poster_path})`
+                    backgroundImage: mediaData.backdrop_path
+                        ? `url(https://image.tmdb.org/t/p/original${mediaData.backdrop_path})`
+                        : mediaData.poster_path
+                        ? `url(https://image.tmdb.org/t/p/original${mediaData.poster_path})`
                         : "none",
                 }}
             >
-            
-                <Details setShowTrailer={setShowTrailer} trailer={trailer!} movie={movie} director={director} />
+                <Details setShowTrailer={setShowTrailer} trailer={trailer!} movie={mediaData} director={director} />
             </div>
-
-            {/* Modal do Trailer */}
             {showTrailer && trailer && (
                 <Modal setShowTrailer={setShowTrailer} trailer={trailer} />
             )}
-
-            {/* Conteúdo principal centralizado */}
-            <Content movie={movie}/>
+            <Content movie={mediaData}/>
         </div>
     );
 }

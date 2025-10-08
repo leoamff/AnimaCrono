@@ -1,0 +1,38 @@
+.movie-card-link {
+    display: block;
+    text-decoration: none;
+    background-color: var(--color-background-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    min-height: 350px; /* Altura mínima pra alinhamento */
+}
+
+.movie-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 2/3; /* Proporção comum de pôsters */
+    object-fit: cover;
+}
+
+.movie-title {
+    padding: 10px;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1em;
+    text-align: center;
+    /* Limita o título a duas linhas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    min-height: 44px; /* Garante que todos os títulos tenham a mesma altura visual */
+}
