@@ -2,11 +2,7 @@ import './header.css';
 import { Link } from 'react-router-dom';
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
-
-// 1. IMPORTAÇÃO DA IMAGEM DO LOGO
-// Ajuste o caminho '../assets/logo.png' conforme a localização exata do seu arquivo
 import logo from '../../assets/logo.jpeg'; 
-
 
 export default function Header() {
     const menuItens = [
@@ -22,9 +18,9 @@ export default function Header() {
                 <div className="header-left">
                     <div className="logo">
                         <Link to="/">
-                            {/* 2. SUBSTITUIÇÃO AQUI: <h1> foi trocado por <img> */}
                             <img src={logo} alt="AnimaCrono Logo" className="header-logo-img"/>
                         </Link>
+                        <span className="logo-name">ANIMACRONO</span>
                     </div>
                     <nav className="desktop-nav">
                         <ul className="menu">

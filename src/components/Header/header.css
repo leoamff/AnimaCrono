@@ -1,8 +1,6 @@
-/* --- CONFIGURAÇÃO GERAL --- */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Paleta de Cores */
   --color-primary: rgb(15, 93, 145);
   --color-accent: #fbbf24;
   --color-text: #ffffff;
@@ -10,8 +8,6 @@
   --color-icon: #e7e9e7;
   --color-search-bg: rgba(255, 255, 255, 0.1);
   --color-border: rgba(255, 255, 255, 0.2);
-
-  /* Fontes */
   --font-logo: 'Bebas Neue', 'Oswald', sans-serif;
   --font-menu: 'Oswald', 'Bebas Neue', sans-serif;
 }
@@ -20,7 +16,6 @@
     box-sizing: border-box; 
 }
 
-/* --- LAYOUT PRINCIPAL DO HEADER --- */
 .header {
   background: var(--color-primary);
   backdrop-filter: blur(10px);
@@ -42,7 +37,6 @@
   height: 60px;
 }
 
-/* --- SEÇÕES ESQUERDA E DIREITA --- */
 .header-left,
 .header-right {
   display: flex;
@@ -58,7 +52,12 @@
   padding: 8px 0;
   min-width: 120px;
 }
-/* --- LOGO --- */
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo a {
   display: flex;
   align-items: center;
@@ -72,22 +71,25 @@
     object-fit: cover; 
 }
 
-.logo h1 {
-  font-family: var(--font-logo); 
-  font-size: 2rem; 
-  font-weight: 400; 
-  color: var(--color-text);
-  margin: 0;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+.logo-name {
+    font-family: var(--font-logo); 
+    font-size: 2rem; 
+    font-weight: 400; 
+    margin: 0;
+    margin-left: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: default;
+    
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary) 175%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    transition: all 0.3s ease; 
 }
 
-.logo h1:hover {
-  color: var(--color-accent);
-}
-
-/* --- NAVEGAÇÃO --- */
 .desktop-nav .menu {
   display: flex;
   list-style: none;
@@ -115,7 +117,6 @@
   text-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
 }
 
-/* --- BUSCA (SEARCH) --- */
 .search-container {
   position: relative;
   display: flex;
@@ -157,7 +158,6 @@
   z-index: 1;
 }
 
-/* --- ÍCONES (PERFIL/USUÁRIO) --- */
 .header-right a {
   color: var(--color-icon);
   text-decoration: none;
@@ -177,9 +177,6 @@
   color: var(--color-accent);
 }
 
-/* --- RESPONSIVIDADE --- */
-
-/* Tablet e Telas Médias */
 @media (max-width: 768px) {
   .header-container {
     padding: 0 20px;
@@ -193,7 +190,7 @@
     gap: 16px;
   }
   
-  .logo h1 { 
+  .logo-name { 
     font-size: 1.4rem;
     letter-spacing: 2px;
   }
@@ -217,16 +214,16 @@
   }
 }
 
-/* Smartphone */
 @media (max-width: 480px) {
   .header-container {
     padding: 0 15px;
     height: 55px; 
   }
   
-  .logo h1 { 
+  .logo-name { 
     font-size: 1.2rem;
     letter-spacing: 1px;
+    margin-left: 6px;
   }
   
   .header-logo-img {
