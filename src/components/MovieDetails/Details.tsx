@@ -24,6 +24,7 @@ type Movie = {
 };
 
 type DetailsProps = {
+  id: number;
   setShowTrailer: React.Dispatch<React.SetStateAction<boolean>>;
   trailer: {
     key: string;
