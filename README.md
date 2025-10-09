@@ -10,7 +10,7 @@
 - **Leonardo Amyntas Machado de Freitas Filho** - 01835116
 - **Júlio César Queiroz de Barros** - 01705803
 - **Andrezza Coelho dos Santos** - 01725227
-- [Nome do Integrante 4]
+- **Gabriela Caetano Corrêa** - 01701267
 
 ## 🎌 Sobre o Projeto
 
