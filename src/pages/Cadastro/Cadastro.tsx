@@ -10,6 +10,7 @@ export default function Cadastro() {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const myList: string[] = [];
 
   const navigate = useNavigate();
 
@@ -45,7 +46,8 @@ export default function Cadastro() {
       id: Date.now(), 
       nome,
       email,
-      password 
+      password,
+      myList
     };
 
     usuariosExistentes.push(novoUsuario);
