@@ -45,7 +45,7 @@ export default function Filmes() {
 
     //renderização
     return (
-    <>
+    <div className="filmes-page">
         <Carousel></Carousel>
         <div className="filmes-container">
             <MovieList 
@@ -77,6 +77,6 @@ export default function Filmes() {
                 contentType='movie'
             />
         </div>
-    </>
+    </div>
     );
 }

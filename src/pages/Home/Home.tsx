@@ -227,7 +227,7 @@ export default function Home() {
                     ) : searchResults.length > 0 ? (
                         <div className="search-results-grid">
                             {searchResults.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie} contentType='movie' />
+                                <MovieCard key={movie.id} movie={movie} />
                             ))}
                         </div>
                     ) : (
@@ -251,28 +251,24 @@ export default function Home() {
                 movies={filmesAnos80}
                 fallbackMessage="Nenhum clássico dos anos 80 foi encontrado."
                 id="section-80s" 
-                contentType='movie'
             />
             <MovieList 
                 title="DESENHOS ANOS 90"
                 movies={filmesAnos90}
                 fallbackMessage="Nenhum filme dos anos 90 encontrado."
                 id="section-90s" 
-                contentType='movie'
             />
             <MovieList 
                 title="NOSTALGIA DO ANO 2000"
                 movies={filmesAnos2000}
                 fallbackMessage="Nenhum filme dos anos 2000 encontrado."
                 id="section-2000s" 
-                contentType='movie'
             />
             <MovieList 
                 title="A NOVA GERAÇÃO ANOS 2020"
                 movies={filmesAnos2020}
                 fallbackMessage="Nenhum filme dos anos 2020 encontrado."
                 id="section-2020s" 
-                contentType='movie'
             />
             
             <hr className="divider" />

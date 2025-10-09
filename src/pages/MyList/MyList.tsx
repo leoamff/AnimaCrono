@@ -80,14 +80,16 @@ export default function MyList() {
     );
 
   return (
-    <div className="bg-black min-h-screen p-6 mx-auto text-white">
-      <MovieList
-        title="Minha Lista"
-        movies={filmes}
-        fallbackMessage="Sua lista está vazia."
-        id="my-list"
-        contentType="movie"
-      />
+    <div className="bg-[#01020c] min-h-screen p-5 text-[#eeeeee]">
+      <div className="[&_.movie-list-grid]:grid [&_.movie-list-grid]:grid-cols-[repeat(auto-fit,minmax(160px,180px))] [&_.movie-list-grid]:gap-4 [&_.movie-list-grid]:justify-center [&_.movie-list-grid]:max-w-6xl [&_.movie-list-grid]:mx-auto [&_.movie-card-link]:max-w-[180px]">
+        <MovieList
+          title="Minha Lista"
+          movies={filmes}
+          fallbackMessage="Sua lista está vazia."
+          id="my-list"
+          contentType="movie"
+        />
+      </div>
     </div>
   );
 }

@@ -43,7 +43,7 @@ export default function Series() {
 
     // Renderização
     return (
-        <>
+        <div className="series-page">
             <Carousel></Carousel>
             <div className="series-container">
 
@@ -76,6 +76,6 @@ export default function Series() {
                     contentType='tv'
                 />
             </div>
-        </>
+        </div>
     );
 }

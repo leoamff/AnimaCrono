@@ -1,6 +1,12 @@
+.series-page {
+    padding: 20px;
+    background-color: #01020c;
+    color: #eeeeee;
+    min-height: 100vh;
+}
+
 .series-container {
-    padding: 2rem;
-    background-color: black;
+    padding: 2rem 0;
 }
 
 .series-container h1 {
