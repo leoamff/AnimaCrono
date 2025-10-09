@@ -1,0 +1,24 @@
+.movie-list-section {
+    padding: 20px 5%;
+    max-width: 1400px;
+    margin: 0 auto 50px;
+}
+
+.movie-list-title {
+    font-size: 1.8em;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+
+.movie-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.movie-list-fallback {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    padding: 20px;
+}

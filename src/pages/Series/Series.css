@@ -1,0 +1,9 @@
+.series-container {
+    padding: 2rem;
+    background-color: black;
+}
+
+.series-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
