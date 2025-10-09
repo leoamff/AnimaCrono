@@ -4,29 +4,14 @@ import useAxios from "../../hooks/useAxios";
 import Modal from "../../components/ModalTrailer/Modal";
 import Details from "../../components/MovieDetails/Details";
 import Content from "../../components/PrincipalContent/Content";
+import type { movieInterface } from '../../components/movieInterface/movieInterface';
 
-type Movie = {
-    id: number;
-    // campos de filmes
-    title?: string;
-    release_date?: string;
-    runtime?: number;
-    budget?: number;
-    revenue?: number;
-    
-    // campos de séries
-    name?: string;
-    first_air_date?: string; 
-    episode_run_time?: number[];
-    
-    // Campos Comuns
-    overview: string;
+type Movie = movieInterface & {
     poster_path: string;
     backdrop_path: string;
-    vote_average: number;
+    episode_run_time?: number[];
     genres: { id: number; name: string }[];
     tagline: string;
-    status: string;
     production_companies: { id: number; name: string; logo_path: string | null }[];
     credits?: {
         cast: { id: number; name: string; character: string; profile_path: string | null }[];
@@ -69,7 +54,7 @@ export default function Movie({ contentType }: MoviePageProps) {
     return (
         <div className="min-h-screen w-full bg-black flex flex-col pb-10">
             <div
-                className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full h-full bg-center bg-cover flex items-end pb-10"
+                className="relative h-[70vw] max-h-[700px] min-h-[350px] w-full bg-center bg-cover flex items-end pb-10"
                 style={{
                     backgroundImage: mediaData.backdrop_path
                         ? `url(https://image.tmdb.org/t/p/original${mediaData.backdrop_path})`

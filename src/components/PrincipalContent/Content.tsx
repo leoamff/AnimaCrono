@@ -1,6 +1,7 @@
 import Cast from "../Cast/Cast";
 import Producers from "../Producers/Producers";
 import TecnicDetails from "../TecnicDetailsOfMovie/TecnicDetails";
+import type { movieInterface } from '../../components/movieInterface/movieInterface';
 
 type Genre = {
   id: number;
@@ -24,26 +25,9 @@ type Credits = {
   cast: Cast[];
 };
 
-type Movie = {
-  // campos de filme/série (flexíveis)
-  title?: string;
-  name?: string; 
-  release_date?: string; 
-  first_air_date?: string;
-  runtime?: number; 
-  episode_run_time?: number[];
-  
-  // campos comuns
+type Movie = movieInterface & {
   tagline?: string;
   genres: Genre[];
-  vote_average: number;
-  overview: string;
-  status: string;
-  
-  // campos somente para filmes
-  budget?: number;
-  revenue?: number;
-  
   production_companies: ProductionCompany[];
   credits?: Credits;
 };
